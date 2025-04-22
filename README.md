@@ -34,7 +34,7 @@ The Gallery Café Website is a dynamic, database-driven web application develope
 ![Homepage](homepage.jpng)
 
 ### Menu & Order Page
-![Menu Page](foodmenu.png)
+![Menu Page](foodmenu.jpeg)
 
 ### Table Reservation
 ![Reservation](orderplacement.png)
