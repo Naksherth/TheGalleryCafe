@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Navigation Bar</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-item">
+        <label for="search-filter-1">Search Filter 1:</label>
+        <input type="text" id="search-filter-1" class="search-input" placeholder="Search...">
+    </div>
+    <div class="nav-item">
+        <label for="search-filter-2">Search Filter 2:</label>
+        <input type="text" id="search-filter-2" class="search-input" placeholder="Search...">
+    </div>
+    <button class="clean-button" onclick="clearFilters()">Clean</button>
+</div>
+
+<script>
+function clearFilters() {
+    document.getElementById('search-filter-1').value = '';
+    document.getElementById('search-filter-2').value = '';
+}
+</script>
+
+</body>
+</html>

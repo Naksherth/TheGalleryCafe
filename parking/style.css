@@ -1,0 +1,73 @@
+body {
+    background: #f8f8ff;
+    color: black;
+    font-size: 15px;
+}
+
+#header {
+    background: #8dbc8f;
+    color: #2f4f4f;
+    text-align: center;
+    border: 1px solid grey;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.title {
+    background: #8dbc8f;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.contain {
+    border: 1px dotted black;
+    margin: 10px;
+}
+
+#leftpanel, #rightpanel {
+    background: white;
+    color: black;
+    border: 1px solid grey;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#leftpanel {
+    width: 100%;
+}
+
+#rightpanel {
+    width: 100%;
+    margin-top: 20px; /* Adjust margin to ensure spacing from the slots */
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.slot.booked {
+    background-color: #ff9999;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.slot-result {
+    display: none;
+    margin-top: 10px;
+}
+
+.clear {
+    clear: both;
+}

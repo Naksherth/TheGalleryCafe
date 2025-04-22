@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Reservation</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        #leftpanel .contain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .slot {
+            width: 100px;
+            height: 100px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+        }
+        .slot.booked {
+            background-color: #ff9999;
+            color: #fff;
+            cursor: not-allowed;
+        }
+        .slot-result {
+            display: none;
+            margin-top: 10px;
+        }
+        #rightpanel {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h2>Parking Reservation and Payment</h2>
+    </div>
+    
+    <div id="leftpanel">
+        <div class="title">Parking Slots</div>
+        <div class="contain">
+            <!-- Parking slots will be listed here -->
+            <div class="slot" id="1"><span>Slot 1</span></div>
+            <div class="slot" id="2"><span>Slot 2</span></div>
+            <div class="slot" id="3"><span>Slot 3</span></div>
+            <div class="slot" id="4"><span>Slot 4</span></div>
+            <div class="slot" id="5"><span>Slot 5</span></div>
+            <div class="slot" id="6"><span>Slot 6</span></div>
+            <div class="slot" id="7"><span>Slot 7</span></div>
+            <div class="slot" id="8"><span>Slot 8</span></div>
+            <div class="slot" id="9"><span>Slot 9</span></div>
+        </div>
+    </div>
+
+    <div id="rightpanel">
+        <div class="title">Reservation Details</div>
+        <div class="contain">
+            <div class="slot-result" id="slot1-result">
+                <span>Slot 1 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot2-result">
+                <span>Slot 2 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot3-result">
+                <span>Slot 3 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot4-result">
+                <span>Slot 4 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot5-result">
+                <span>Slot 5 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot6-result">
+                <span>Slot 6 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot7-result">
+                <span>Slot 7 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot8-result">
+                <span>Slot 8 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <div class="slot-result" id="slot9-result">
+                <span>Slot 9 Reserved:</span><p></p>
+                <button class="action" id="close">Close Reservation</button>
+            </div>
+            <h5>Tip: Click on a slot to reserve it. The slot will be marked as booked after closing the reservation.</h5>
+        </div>
+    </div>
+</body>
+</html>

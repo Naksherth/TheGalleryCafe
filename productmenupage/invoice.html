@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gallery Cafe Invoice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #ddd;
+            padding: 40px;
+        }
+
+        textarea {
+            width: 100% !important;
+            border: 1px solid #ddd !important;
+        }
+
+        .container {
+            min-height: 29.7cm;
+            margin: auto;
+        }
+
+        .invoice {
+            background: #fff;
+            width: 100%;
+            padding: 50px;
+        }
+
+        .logo {
+            width: 2.5cm;
+        }
+
+        .document-type {
+            text-align: right;
+            color: #444;
+        }
+
+        .conditions {
+            font-size: 0.7em;
+            color: #666;
+        }
+
+        .bottom-page {
+            font-size: 0.7em;
+        }
+
+        table {
+            font-size: 12px !important;
+        }
+
+        table td {
+            padding: 0.45rem !important;
+        }
+
+        table td {
+            font-size: 15px;
+        }
+
+        @media print {
+            [data-editable="true"] {
+                border: none !important;
+            }
+
+            .invoice {
+                display: block;
+            }
+
+            .hide-elements {
+                display: none;
+            }
+
+            @page {
+                size: auto;
+                margin: 30px 0;
+            }
+
+            .container {
+                width: 100% !important;
+            }
+
+            .invoice {
+                font-size: 13px !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+
+            .btn {
+                display: none;
+            }
+
+            table td {
+                padding: 0.45rem !important;
+            }
+
+            .table>:not(caption)>*>* {
+                color: black !important;
+                font-size: 10px !important;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            textarea {
+                resize: none;
+            }
+        }
+
+        .editable {
+            cursor: pointer;
+        }
+
+        .transparent-input {
+            border: none;
+            background: transparent;
+            outline: none;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        [data-editable="true"] {
+            border: 1px dashed #ddd;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <section style="flex-grow: 4;">
+            <div class="container">
+                <div class="invoice" id="invoice-container">
+                    <div class="row">
+                        <div class="col-7">
+                            <img alt="Restaurant Logo" src="../Homepage/images/2-removebg-preview.png" class="logo">
+                        </div>
+                        <div class="col-5">
+                            <h1 class="document-type display-4">
+                                <div data-editable="true">The Gallery Cafe</div>
+                            </h1>
+                            <div class="text-right" data-editable="true">N°90T-17-01-0123</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <p>
+                                <div data-editable="true">The Gallery Cafe</div><br>
+                                <div data-editable="true">
+                                    123 Main Street <br> City, State, ZIP
+                                </div>
+                            </p>
+                        </div>
+                        <div class="col-5" style="text-align: right;">
+                            <br><br><br>
+                            <p>
+                                <div data-editable="true">
+                                    Customer Name <br>
+                                    Customer Address <br>
+                                    City, State, ZIP
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <br><br>
+                    <h6>
+                        <div data-editable="true">Date: <span id="invoice-date"></span></div>
+                    </h6>
+                    <br>
+                    <table id="table" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                                <th class="hide-elements">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be added dynamically -->
+                        </tbody>
+                    </table>
+                    <button class="btn btn-xs btn-success" onclick="addNewRow()">+</button>
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <table class="table table-sm text-right">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Total</strong></td>
+                                        <td class="text-right" id="total">0.00 <span class="currency">LKR</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="conditions">
+                        <div data-editable="true">
+                            Your order at The Gallery Cafe is like a brushstroke on our canvas of flavors.<br>
+                            We appreciate your taste for artful cuisine!<br>
+                            Istuti and thank you for choosing us!
+                        </div>
+                    </p>
+                    <br><br><br><br>
+                    <p class="bottom-page text-right">
+                        <div data-editable="true">
+                            <button class="btn btn-success btn-block" onclick="printInvoice()">Place order</button>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Function to set today's date
+        function setTodaysDate() {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            document.getElementById('invoice-date').innerText = `${day}/${month}/${year}`;
+        }
+
+        // Add product to invoice
+        function addProductToInvoice(name, unitPrice) {
+            const tableBody = document.querySelector("#table tbody");
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td class="text-right"><input type="number" value="1" class="transparent-input text-right" oninput="updateTotal(this)"></td>
+                <td class="text-right">${unitPrice.toFixed(2)} <span class="currency">LKR</span></td>
+                <td class="text-right">${unitPrice.toFixed(2)} <span class="currency">LKR</span></td>
+                <td class="text-right hide-elements"><button class="btn btn-sm btn-danger" onclick="deleteRow(this)">-</button></td>
+            `;
+            tableBody.appendChild(newRow);
+            calculateTotals();
+        }
+
+        // Update total when quantity changes
+        function updateTotal(input) {
+            const row = input.closest("tr");
+            const quantity = parseFloat(input.value) || 0;
+            const unitPrice = parseFloat(row.children[2].innerText) || 0;
+            const totalPrice = quantity * unitPrice;
+            row.children[3].innerText = totalPrice.toFixed(2) + " LKR";
+            calculateTotals();
+        }
+
+        // Calculate totals
+        function calculateTotals() {
+            const rows = document.querySelectorAll("#table tbody tr");
+            let total = 0;
+            rows.forEach(row => {
+                const totalPrice = parseFloat(row.children[3].innerText) || 0;
+                total += totalPrice;
+            });
+            document.getElementById("total").innerText = total.toFixed(2) + " LKR";
+        }
+
+        // Delete a row
+        function deleteRow(button) {
+            button.closest("tr").remove();
+            calculateTotals();
+        }
+
+        // Print invoice
+        function printInvoice() {
+            window.print();
+        }
+
+        // Function to add new row manually
+        function addNewRow() {
+            addProductToInvoice("New Product", 0.00);
+        }
+
+        // Set today's date on page load
+        window.onload = function () {
+            setTodaysDate();
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product_name');
+            const unitPrice = parseFloat(urlParams.get('unit_price'));
+
+            if (productName && unitPrice) {
+                addProductToInvoice(productName, unitPrice);
+            }
+        }
+    </script>
+</body>
+
+</html>

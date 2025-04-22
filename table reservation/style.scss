@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap");
+
+:root {
+  --bg-color: #7dedb8;
+  --border-card: 6px;
+
+  --desk-size-4-people: 80px;
+  --desk-size-6-people: 100px;
+  --desk-size-8-people: 140px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.bg-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: var(--bg-color);
+}
+
+.cont-cards {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.title-description {
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  color: #5fbd90;
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+.title-description b {
+  font-weight: bold;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 130px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: var(--border-card);
+  background-color: #fff;
+  box-shadow: 0px 0 30px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cont-desk {
+  position: relative;
+  display: flex;
+  background-color: #ededed;
+  width: 40%;
+  min-width: 144px;
+  text-align: center;
+  border-radius: var(--border-card) 0 0 var(--border-card);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.desk {
+  display: flex;
+  width: var(--desk-size-4-people);
+  height: var(--desk-size-4-people);
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.cont-person {
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -20px;
+  margin-top: -20px;
+  transform: translate(0px, 0px) rotate(0deg);
+  transition: all 375ms;
+}
+
+/* Mixin to distribute people on a circle */
+.card .cont-desk .desk .cont-person:nth-of-type(1) {
+  transform: rotate(0deg) translate(calc(var(--desk-size-4-people) / 2), calc(var(--desk-size-4-people) * 3)) rotate(-90deg);
+}
+
+/* You need to add the rest of the `nth-of-type` selectors manually */
+.card .cont-desk .desk .cont-person:nth-of-type(2) {
+  transform: rotate(90deg) translate(calc(var(--desk-size-4-people) / 2), calc(var(--desk-size-4-people) * 3)) rotate(-90deg);
+}
+
+/* Add similar rules for other types and quantities */
+
+.col-description {
+  position: relative;
+  float: left;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.cont-description {
+  display: flex;
+  flex-direction: row;
+  align-self: start;
+  justify-content: center;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.text-description, .text-counter {
+  font-size: 26px;
+  color: #444;
+}
+
+.btn {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #eeedee;
+}
+
+.btn i {
+  margin-top: 20px;
+}
+
+.btn.btn-plus, .btn.btn-down {
+  color: #000;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.card-6-people {
+  height: auto;
+  flex-direction: column;
+}
+
+.card-6-people .cont-desk {
+  width: 100%;
+  height: 155px;
+}
+
+.card-6-people .cont-desk .desk {
+  width: var(--desk-size-6-people);
+  height: var(--desk-size-6-people);
+}
+
+/* Add similar rules for quantity-person-on-desk */
+
+.card-8-people {
+  height: auto;
+  flex-direction: column;
+}
+
+.card-8-people .cont-desk {
+  width: 100%;
+  height: 175px;
+}
+
+.card-8-people .cont-desk .desk {
+  width: var(--desk-size-8-people);
+  height: var(--desk-size-8-people);
+}
+
+/* Add similar rules for quantity-person-on-desk */
+
+.col-description {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 400px) {
+  .card {
+    width: 92%;
+    height: auto;
+    flex-direction: column;
+  }
+  .cont-desk {
+    border-radius: var(--border-card) var(--border-card) 0 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+  .col-icon, .col-description {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+}
